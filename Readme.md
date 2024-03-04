@@ -5,7 +5,7 @@ Welcome to your deployment task! This guide will walk you through the process of
 ## Objective
 
 Your mission is to:
-1. Deploy a Lambda function using the `jonathanpick/first-lambda:v1` Docker image. Connect it to an API Gateway, invoke the function at its root path ("/"), and note down the hint provided in the response.
+1. Deploy a Lambda function using the `jonathanpick/first-lambda:v1` Docker image. Connect it to an API Gateway, invoke the function at its root path ("/"), **note down the hint provided in the response.**
 2. Deploy a second Lambda function using the `jonathanpick/second-lambda:v1` Docker image. This time, connect it to the same API Gateway, invoke the function at its root path ("/"), and capture the secret provided in the response.
 
 ## Prerequisites
