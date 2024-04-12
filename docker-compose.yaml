@@ -1,0 +1,39 @@
+version: '3.8'
+services:
+  localstack:
+    container_name: localstack-main
+    image: localstack/localstack-pro
+    ports:
+      - '4510-4599:4510-4599'
+      - "4566:4566"
+    environment:
+    - LOCALSTACK_AUTH_TOKEN=ls-SIWE3502-9082-FUHe-wUpE-leYISUHUb55d
+    - SERVICES=lambda,apigateway,iam,logs,ec2,ecr,cloudwatch
+    - DEBUG=1
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4566/_localstack/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+  # terraform-init:
+  #   image: hashicorp/terraform:1.7.5
+  #   depends_on:
+  #     localstack:
+  #       condition: service_healthy
+  #   volumes:
+  #     - .:/infra
+  #   working_dir: /infra
+  #   command: "init"
+  # terraform-apply:
+  #   image: hashicorp/terraform:1.7.5
+  #   depends_on:
+  #     terraform-init:
+  #       condition: service_completed_successfully
+  #   volumes:
+  #     - .:/infra
+  #   working_dir: /infra
+  #   command: "apply -auto-approve"
+

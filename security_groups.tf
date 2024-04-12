@@ -1,6 +1,6 @@
 resource "aws_security_group" "allow_web" {
-  name        = "allow_web_traffic"
-  description = "Allow web traffic"
+  name        = "allow_custom_web_traffic"
+  description = "Allow web traffic (custom)"
   vpc_id      = aws_vpc.my_vpc.id
 
   ingress {
